@@ -2,7 +2,7 @@ import random
 import math
 import sys
 import pygame as pg
-
+import time
 
 WIDTH, HEIGHT = 1600, 900
 delta = {
@@ -62,9 +62,16 @@ def main():
         for event in pg.event.get():
             if event.type == pg.QUIT: 
                 return
-        if kk_rct.colliderect(bd_rct):
-            print("ゲームオーバー")
-            return #ゲームオーバー
+        if kk_rct.colliderect(bd_rct):  # 着弾するとこうかとん画像が切り替わる
+            kk_img_lose_load = pg.image.load("ex02/fig/9.png")
+            kk_img_lose = pg.transform.rotozoom(kk_img_lose_load, 0, 2.0)
+            kk_img = kk_img_lose
+            screen.blit(kk_img, kk_rct)
+            pg.display.update()
+            time.sleep(2)
+            
+            return
+
         key_lst = pg.key.get_pressed()
         sum_mv = [0, 0]
         for k, mv in delta.items():
