@@ -84,7 +84,6 @@ def main():
         kk_1 = 0
         for k, mv in delta.items():
             if key_lst[k]:
-                kk_rct.move_ip(mv)
                 kk_0 = kk_0 + mv[0]
                 kk_1 = kk_1 + mv[1]
         
